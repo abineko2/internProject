@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
-  has_many 
+
+  has_many :processings, dependent: :destroy
   validates :name, presence: true, uniqueness: true, length: {maximum: 10}
   scope  :descendingOrder,-> { order(id: :DESC)}
  
@@ -19,5 +20,14 @@ class Item < ApplicationRecord
       image = param.read
     end
   end
+
+   #関連加工法名検索
+   def processNames
+     array = []
+     processings.each do |process|
+       array.push(process.name)
+     end
+     return array
+   end
   
 end
