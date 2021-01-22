@@ -5,6 +5,18 @@ class Order < ApplicationRecord
   validates :num, presence: true, :numericality => { :greater_than => 0 } 
   validates :order_time, presence: true
 
-  scope :timeSort, -> { order(order_time: :asc)}
+  scope :timeSort, -> { where(order_date: Date.today ).order(order_time: :asc)}
+
+  enum status:{
+    in_order:        1, #依頼中
+    processed:       2, #加工済み
+    delivery:        3, #渡済み
+  }
+
+
+  #合計金額
+  def total
+    num.to_i * price.to_i
+  end
  
 end
