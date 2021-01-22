@@ -11,11 +11,15 @@ Rails.application.routes.draw do
       patch :update, on: :collection
     end
     resources :products_change, only:[:index, :create]
+    resources :orders, except: [:new, :create]
   end
 #####################菅野さんエリア##################################################################################
   namespace :customer do
     resources :users
   end
-
+  
+  get    '/login', to: 'sessions#new'
+  post   '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
 end
