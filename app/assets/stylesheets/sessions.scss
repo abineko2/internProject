@@ -1,0 +1,27 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* ログインフォーム */
+
+
+.loginpage{
+  margin: auto;
+  width: 90%;
+
+  .label-login {
+    margin-top: 5px;
+  }
+
+  .btn-login {
+    margin-top: 10px;
+  }
+  .col{
+    background-color: lightsteelblue;
+    margin: 10px 5px 0px 10px;
+    padding: 10px;
+  }
+  .center{
+    text-align: center;
+  }
+
+}
