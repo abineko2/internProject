@@ -15,16 +15,19 @@ Rails.application.routes.draw do
     resources :orders, except: [:new, :create]
     resources :sales_managements, only: [ :index ]
     resources :product_sales_numbers, only: [ :show ]
+    resources :product_multiples, only: [ :new, :create ] do
+      post :rows, on: :collection
+    end
     resources :users
   end
 #####################菅野さんエリア##################################################################################
   get '/signup', to: 'customer/users#new' 
   
   namespace :customer do
-    resources :users
+    resources :users, except:[:index, :destroy]
   end
   
-  #resources :session, only:[:new, :create,:destroy]
+  resources :session, only:[:new, :create,:destroy]
   get    '/login', to: 'sessions#new'
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
